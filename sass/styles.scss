@@ -1,0 +1,13 @@
+/* Import Sass mixins, variables, Compass modules, etc. */
+@import "init";
+
+/* HTML element (SMACSS base) rules */
+@import "normalize";
+
+/* Layout rules */
+//@import "layouts/responsive";
+
+/* Component (SMACSS module) rules */
+//@import "components/misc";
+@import "page";
+@import "blocks";
