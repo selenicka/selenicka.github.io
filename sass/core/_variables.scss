@@ -1,2 +1,10 @@
-$base__background-color: #f8f8f8;
-$header__background-color: #fff;
+$color-white: #fff;
+$color-black: #000;
+
+$base__background-color: #f1f1f1;
+$header__background-color: $color-white;
+$footer__background-color: #4c4c4c;
+$title__color: #e84c3d;
+$link__color: #fd7e52;
+$article-date__color: #c6c6c6;
+$article-image__width: 350px;

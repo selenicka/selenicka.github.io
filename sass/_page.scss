@@ -1,5 +1,56 @@
 #container {
     background-color: $base__background-color;
-    width: 100%;
+}
+
+.wrapper {
     margin: 0 auto;
+    padding: 0 $indent__s;
+    max-width: 100%;
+}
+
+header {
+    @extend %clearfix;
+    background-color: $header__background-color;
+
+    .title {
+        color: $title__color;
+        font-size: 2.5em;
+        line-height: 1.6em;
+    }
+}
+
+#logo {
+    float: left;
+    margin: $indent__s $indent__l $indent__xs 0;
+}
+
+footer {
+    background-color: $footer__background-color;
+    color: $color-white;
+    font-size: .8em;
+
+    p {
+        margin: 0;
+        padding: $indent__xs 0;
+    }
+
+    a {
+        color: $color-white;
+    }
+}
+
+@media all and (min-width: $screen__xs) {
+    header {
+        .title {
+            letter-spacing: 0.2em;
+            line-height: 2.3em;
+        }
+    }
+}
+
+@media all and (min-width: $screen__m) {
+    .wrapper {
+        padding: 0 $indent__m;
+        max-width: $screen__l;
+    }
 }

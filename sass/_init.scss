@@ -7,7 +7,6 @@ $screen__xs: 480px;
 $screen__s: 640px;
 $screen__m: 768px;
 $screen__l: 1024px;
-$screen__xl: 1440px;
 
 //
 // Font faces, stacks and sizes.
@@ -22,6 +21,13 @@ $h3-font-size: 1.17 * $base-font-size;
 $h4-font-size: 1    * $base-font-size;
 $h5-font-size: 0.83 * $base-font-size;
 $h6-font-size: 0.67 * $base-font-size;
+
+//Indents
+$indent__base: 1em;
+$indent__xs: $indent__base / 2;
+$indent__s: $indent__base;
+$indent__m: $indent__base * 2;
+$indent__l: $indent__base * 3;
 
 // First, let's create some font stacks.
 $arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;

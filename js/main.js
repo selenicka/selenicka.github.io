@@ -2,7 +2,8 @@
 
 const apiKey = '11230ec2000f450c914808f5b6f035f6';
 
-var urlAPI = 'https://newsapi.org/v1/articles?source=bbc-news&apiKey=' + apiKey,
+var newsSource = 'bbc-sport',
+    urlAPI = 'https://newsapi.org/v1/articles?source=' + newsSource + '&apiKey=' + apiKey,
     request = new Request(urlAPI),
     init = { method: 'GET', mode: 'cors' };
 
@@ -31,18 +32,16 @@ class Article {
         return `
             <div class="article">
                 <div class="article-wrapper">
-                    <div class="article-author">
-                        <a class="link">${ this.author }</a>
-                        <div class="article-published">
-                            <time datetime="${ this.publishedAt }">${ this.formatDate() }</time>
-                        </div>
-                    </div>
+                    ${ this.getImage() }
                     <div class="article-content">
-                        ${ this.getImage() }
                         <h2>
                             <a href="${ this.url }">${ this.title }</a>
                         </h2>
                         <p>${ this.description }</p>
+                    </div>
+                    <div class="article-footer">
+                        ${ this.getAuthor() }
+                        ${ this.getPublishDate() }
                     </div>
                 </div>
             </div>
@@ -54,6 +53,20 @@ class Article {
             <figure class="article-image">
                 <img src="${ this.urlToImage }"/>
             </figure>
+        ` : '';
+    }
+
+    getAuthor() {
+        return this.author ? `
+            <div class="article-author">${ this.author }</div>
+        ` : '';
+    }
+
+    getPublishDate() {
+        return this.publishedAt ? `
+            <div class="article-published">
+                <time datetime="${ this.publishedAt }">${ this.formatDate() }</time>
+            </div>
         ` : '';
     }
 
@@ -70,7 +83,7 @@ class Article {
         .then(r => r.json())
         .then((response) => {
             if (response.status === 'ok'){
-                proceedResponce(response.articles);
+            proceedResponce(response.articles);
             }
         })
         .catch((err) => {
@@ -98,5 +111,5 @@ function proceedResponce(newsList) {
         publishedList.appendChild(article.publish());
     });
 
-    document.querySelector('.wrapper').appendChild(publishedList);
+    document.querySelector('.news-wrapper').appendChild(publishedList);
 }
