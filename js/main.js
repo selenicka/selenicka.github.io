@@ -2,13 +2,58 @@
 
 const apiKey = '11230ec2000f450c914808f5b6f035f6';
 
-var newsSource = 'bbc-sport',
-    urlAPI = 'https://newsapi.org/v1/articles?source=' + newsSource + '&apiKey=' + apiKey,
-    request = new Request(urlAPI),
-    init = { method: 'GET', mode: 'cors' };
+var newsSource = 'bbc-sport';
 
-class Article {
-    constructor(element) {
+class News {
+    constructor(newsSource, apiKey) {
+        let urlAPI = 'https://newsapi.org/v1/articles?source=' + newsSource + '&apiKey=' + apiKey,
+            request = new Request(urlAPI);
+
+        let requestInit = {
+            method: 'GET',
+            mode: 'cors'
+        };
+
+        this.requestNews(request, requestInit);
+    }
+
+    requestNews(request, init) {
+        fetch(request, init)
+            .then(r => r.json())
+            .then((response) => {
+                if (response.status === 'ok'){
+                    this.proceedResponce(response.articles);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    proceedResponce(newsList) {
+        let publishedList = document.createElement('div');
+        publishedList.className = "newsList";
+
+        newsList.forEach(element => {
+            element = new Proxy(element, {
+                get(target, prop) {
+                    if (prop in target) {
+                        return target[prop];
+                    } else {
+                        console.log(`Property ${prop} is undefined`);
+                        return false;
+                    }
+                }
+            });
+
+            this.createArticle(element);
+            publishedList.appendChild(this.publishArticle());
+        });
+
+        document.querySelector('.news-wrapper').appendChild(publishedList);
+    }
+
+    createArticle(element) {
         let {title, description, author, url, publishedAt, urlToImage} = element;
 
         this.title = title;
@@ -19,7 +64,7 @@ class Article {
         this.urlToImage = urlToImage;
     }
 
-    publish() {
+    publishArticle() {
         let wrapper = document.createElement('div');
 
         wrapper.className = "js-item";
@@ -78,38 +123,4 @@ class Article {
     }
 }
 
-(function requestNews() {
-    fetch(request, init)
-        .then(r => r.json())
-        .then((response) => {
-            if (response.status === 'ok'){
-            proceedResponce(response.articles);
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-})();
-
-function proceedResponce(newsList) {
-    let publishedList = document.createElement('div');
-    publishedList.className = "newsList";
-
-    newsList.forEach(element => {
-        element = new Proxy(element, {
-            get(target, prop) {
-                if (prop in target) {
-                    return target[prop];
-                } else {
-                    console.log(`Property ${prop} is undefined`);
-                    return false;
-                }
-            }
-        });
-
-        let article = new Article(element);
-        publishedList.appendChild(article.publish());
-    });
-
-    document.querySelector('.news-wrapper').appendChild(publishedList);
-}
+new News(newsSource, apiKey);
