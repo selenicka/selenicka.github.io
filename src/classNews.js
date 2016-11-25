@@ -1,10 +1,4 @@
-'use strict';
-
-const apiKey = '11230ec2000f450c914808f5b6f035f6';
-
-var newsSource = 'bbc-sport';
-
-class News {
+export default class News {
     constructor(newsSource, apiKey) {
         let urlAPI = 'https://newsapi.org/v1/articles?source=' + newsSource + '&apiKey=' + apiKey,
             request = new Request(urlAPI);
@@ -122,5 +116,3 @@ class News {
         return `${ d.getDate() } ${ MM[d.getMonth()] } ${ d.getFullYear() }`;
     }
 }
-
-new News(newsSource, apiKey);

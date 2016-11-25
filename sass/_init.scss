@@ -53,13 +53,13 @@ $nav-height: 3em;
 // =============================================================================
 
 // Add Compass' IE and vendor prefix support variables.
-@import "compass/support";
+//@import "compass/support";
 // Better than Drupal's clearfix.
-@import "compass/utilities/general/clearfix";
+//@import "compass/utilities/general/clearfix";
 // Use one CSS3 mixin instead of multiple vendor prefixes.
-@import "compass/css3";
+//@import "compass/css3";
 // Helps set up a vertical rhythm.
-@import "compass/typography/vertical_rhythm";
+//@import "compass/typography/vertical_rhythm";
 
 @import "core/variables";
 @import "core/placeholders";
