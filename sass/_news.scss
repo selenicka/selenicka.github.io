@@ -46,6 +46,28 @@ h1 {
     font-size: .8em;
 }
 
+#loadBtn {
+    background-color: $btn__background-color;
+    border: 1px solid $btn__border-color;
+    border-radius: 0;
+    color: $color-white;
+    display: inline-block;
+    font-size: 1.6rem;
+    letter-spacing: 0.025em;
+    line-height: 1.36;
+    margin-bottom: $indent__m;
+    padding: 0.6rem 1em;
+    text-align: center;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);
+    vertical-align: baseline;
+
+    &:focus,
+    &:hover {
+        background-color: $btn_hover__background-color;
+        border-color: $btn_hover__border-color;
+    }
+}
+
 @media all and (min-width: $screen__xs) {
     .article-image {
         float: right;

@@ -1,8 +1,7 @@
 webpackJsonp([1],[
 /* 0 */,
 /* 1 */,
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11,11 +10,11 @@ webpackJsonp([1],[
 	    value: true
 	});
 
-	var _classCallCheck2 = __webpack_require__(4);
+	var _classCallCheck2 = __webpack_require__(3);
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-	var _createClass2 = __webpack_require__(5);
+	var _createClass2 = __webpack_require__(4);
 
 	var _createClass3 = _interopRequireDefault(_createClass2);
 
@@ -140,7 +139,7 @@ webpackJsonp([1],[
 	exports.default = News;
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -154,14 +153,14 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _defineProperty = __webpack_require__(6);
+	var _defineProperty = __webpack_require__(5);
 
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -186,37 +185,37 @@ webpackJsonp([1],[
 	}();
 
 /***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(6), __esModule: true };
+
+/***/ },
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(7), __esModule: true };
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(8);
-	var $Object = __webpack_require__(11).Object;
+	__webpack_require__(7);
+	var $Object = __webpack_require__(10).Object;
 	module.exports = function defineProperty(it, key, desc){
 	  return $Object.defineProperty(it, key, desc);
 	};
 
 /***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $export = __webpack_require__(8);
+	// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
+	$export($export.S + $export.F * !__webpack_require__(18), 'Object', {defineProperty: __webpack_require__(14).f});
+
+/***/ },
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $export = __webpack_require__(9);
-	// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-	$export($export.S + $export.F * !__webpack_require__(19), 'Object', {defineProperty: __webpack_require__(15).f});
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var global    = __webpack_require__(10)
-	  , core      = __webpack_require__(11)
-	  , ctx       = __webpack_require__(12)
-	  , hide      = __webpack_require__(14)
+	var global    = __webpack_require__(9)
+	  , core      = __webpack_require__(10)
+	  , ctx       = __webpack_require__(11)
+	  , hide      = __webpack_require__(13)
 	  , PROTOTYPE = 'prototype';
 
 	var $export = function(type, name, source){
@@ -276,7 +275,7 @@ webpackJsonp([1],[
 	module.exports = $export;
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports) {
 
 	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -285,18 +284,18 @@ webpackJsonp([1],[
 	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// optional / simple context binding
-	var aFunction = __webpack_require__(13);
+	var aFunction = __webpack_require__(12);
 	module.exports = function(fn, that, length){
 	  aFunction(fn);
 	  if(that === undefined)return fn;
@@ -317,7 +316,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = function(it){
@@ -326,12 +325,12 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 14 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var dP         = __webpack_require__(15)
-	  , createDesc = __webpack_require__(23);
-	module.exports = __webpack_require__(19) ? function(object, key, value){
+	var dP         = __webpack_require__(14)
+	  , createDesc = __webpack_require__(22);
+	module.exports = __webpack_require__(18) ? function(object, key, value){
 	  return dP.f(object, key, createDesc(1, value));
 	} : function(object, key, value){
 	  object[key] = value;
@@ -339,15 +338,15 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 15 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var anObject       = __webpack_require__(16)
-	  , IE8_DOM_DEFINE = __webpack_require__(18)
-	  , toPrimitive    = __webpack_require__(22)
+	var anObject       = __webpack_require__(15)
+	  , IE8_DOM_DEFINE = __webpack_require__(17)
+	  , toPrimitive    = __webpack_require__(21)
 	  , dP             = Object.defineProperty;
 
-	exports.f = __webpack_require__(19) ? Object.defineProperty : function defineProperty(O, P, Attributes){
+	exports.f = __webpack_require__(18) ? Object.defineProperty : function defineProperty(O, P, Attributes){
 	  anObject(O);
 	  P = toPrimitive(P, true);
 	  anObject(Attributes);
@@ -360,17 +359,17 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(17);
+	var isObject = __webpack_require__(16);
 	module.exports = function(it){
 	  if(!isObject(it))throw TypeError(it + ' is not an object!');
 	  return it;
 	};
 
 /***/ },
-/* 17 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = function(it){
@@ -378,24 +377,24 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 18 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = !__webpack_require__(19) && !__webpack_require__(20)(function(){
-	  return Object.defineProperty(__webpack_require__(21)('div'), 'a', {get: function(){ return 7; }}).a != 7;
+	module.exports = !__webpack_require__(18) && !__webpack_require__(19)(function(){
+	  return Object.defineProperty(__webpack_require__(20)('div'), 'a', {get: function(){ return 7; }}).a != 7;
 	});
 
 /***/ },
-/* 19 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Thank's IE8 for his funny defineProperty
-	module.exports = !__webpack_require__(20)(function(){
+	module.exports = !__webpack_require__(19)(function(){
 	  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 	});
 
 /***/ },
-/* 20 */
+/* 19 */
 /***/ function(module, exports) {
 
 	module.exports = function(exec){
@@ -407,11 +406,11 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(17)
-	  , document = __webpack_require__(10).document
+	var isObject = __webpack_require__(16)
+	  , document = __webpack_require__(9).document
 	  // in old IE typeof document.createElement is 'object'
 	  , is = isObject(document) && isObject(document.createElement);
 	module.exports = function(it){
@@ -419,11 +418,11 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.1 ToPrimitive(input [, PreferredType])
-	var isObject = __webpack_require__(17);
+	var isObject = __webpack_require__(16);
 	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
 	// and the second argument - flag - preferred type is a string
 	module.exports = function(it, S){
@@ -436,7 +435,7 @@ webpackJsonp([1],[
 	};
 
 /***/ },
-/* 23 */
+/* 22 */
 /***/ function(module, exports) {
 
 	module.exports = function(bitmap, value){

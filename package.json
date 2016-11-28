@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "babel js -d src",
-    "webpack": "webpack",
+    "webpack-dev": "webpack",
+    "webpack-prod": "webpack --config webpack.production.config.js -p",
     "start": "webpack-dev-server"
   },
   "devDependencies": {

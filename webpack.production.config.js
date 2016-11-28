@@ -3,18 +3,14 @@ var webpack = require("webpack");
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const devServer = {
-  port: 8080,
-  host: '127.0.0.2'
-};
-
 module.exports = {
   context: path.resolve(__dirname, './'),
-  entry: ['./index.js'],
-  devServer: devServer,
+  entry: {
+    main: './index',
+    styles: './sass/styles'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'dist/',
     filename: 'app.js'
   },
   resolve: {
@@ -40,7 +36,7 @@ module.exports = {
     },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css!sass'),
+        loader: ExtractTextPlugin.extract('style', 'css!sass'),
         include: path.resolve(__dirname, 'sass')
       }
     ]
@@ -54,8 +50,10 @@ module.exports = {
       inject: 'body',
       filename: '../index.html'
     }),
-    new webpack.DefinePlugin({
-      'NODE_ENV': JSON.stringify('production')
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
     })
   ]
 };
