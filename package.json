@@ -4,8 +4,9 @@
   "scripts": {
     "build": "babel js -d src",
     "webpack-dev": "webpack",
-    "webpack-prod": "webpack --config webpack.production.config.js -p",
-    "start": "webpack-dev-server"
+    "webpack-prod": "webpack --config configs/webpack.production.config.js -p",
+    "start": "webpack-dev-server",
+    "clean": "rm -r dist/*"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -29,6 +30,7 @@
     "html-webpack-plugin": "^2.24.1",
     "proxy-polyfill": "^0.1.6",
     "uglify-js": "^2.7.4",
+    "webpack-merge": "^1.0.2",
     "whatwg-fetch": "^2.0.1"
   }
 }
