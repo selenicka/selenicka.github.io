@@ -9,6 +9,7 @@ const devServer = {
 
 module.exports = merge(config, {
   devServer: devServer,
+  watch: true,
   output: {
     publicPath: 'dist/',
   },

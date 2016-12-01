@@ -14,11 +14,12 @@ document.getElementById('loadBtn').onclick = function ( ) {
 
     require.ensure([], function (require) {
         const apiKey = '11230ec2000f450c914808f5b6f035f6';
-        var newsSource = 'bbc-sport';
+        var newsSource = 'bbc-sport',
+            newsView = 'full';
 
         let News = require("./src/classNews.js").default;
 
-        new News(newsSource, apiKey);
+        new News(newsSource, apiKey, newsView);
 
         setTimeout(function () {
             self.style.display = 'none';

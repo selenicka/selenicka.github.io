@@ -22,8 +22,106 @@ webpackJsonp([1],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var Article = function () {
+	    function Article(element) {
+	        (0, _classCallCheck3.default)(this, Article);
+	        var title = element.title,
+	            description = element.description,
+	            author = element.author,
+	            url = element.url,
+	            publishedAt = element.publishedAt,
+	            urlToImage = element.urlToImage;
+
+
+	        this.title = title;
+	        this.description = description;
+	        this.author = author;
+	        this.publishedAt = publishedAt;
+	        this.url = url;
+	        this.urlToImage = urlToImage;
+	    }
+
+	    (0, _createClass3.default)(Article, [{
+	        key: 'getContent',
+	        value: function getContent() {
+	            return '\n            <div class="article-content">\n                <h2>\n                    <a href="' + this.url + '">' + this.title + '</a>\n                </h2>\n                <p>' + this.description + '</p>\n            </div>\n        ';
+	        }
+	    }, {
+	        key: 'getImage',
+	        value: function getImage() {
+	            return this.urlToImage ? '\n            <figure class="article-image">\n                <img src="' + this.urlToImage + '"/>\n            </figure>\n        ' : '';
+	        }
+	    }, {
+	        key: 'getAuthor',
+	        value: function getAuthor() {
+	            return this.author ? '\n            <div class="article-author">' + this.author + '</div>\n        ' : '';
+	        }
+	    }, {
+	        key: 'getFooter',
+	        value: function getFooter() {
+	            return '\n            <div class="article-footer">\n                ' + this.getAuthor() + '\n                ' + this.getPublishDate() + '\n            </div>\n        ';
+	        }
+	    }, {
+	        key: 'getPublishDate',
+	        value: function getPublishDate() {
+	            return this.publishedAt ? '\n            <div class="article-published">\n                <time datetime="' + this.publishedAt + '">' + this.formatDate() + '</time>\n            </div>\n        ' : '';
+	        }
+	    }, {
+	        key: 'formatDate',
+	        value: function formatDate() {
+	            var MM = { 1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December" },
+	                d = new Date(this.publishedAt);
+
+	            return d.getDate() + ' ' + MM[d.getMonth()] + ' ' + d.getFullYear();
+	        }
+	    }]);
+	    return Article;
+	}();
+
+	var ArticleBuilder = function () {
+	    function ArticleBuilder(element) {
+	        (0, _classCallCheck3.default)(this, ArticleBuilder);
+
+	        this.article = new Article(element);
+	        this.articleHtml = '';
+	    }
+
+	    (0, _createClass3.default)(ArticleBuilder, [{
+	        key: 'buildFigure',
+	        value: function buildFigure() {
+	            this.articleHtml += this.article.getImage();
+	        }
+	    }, {
+	        key: 'buildContent',
+	        value: function buildContent() {
+	            this.articleHtml += this.article.getContent();
+	        }
+	    }, {
+	        key: 'buildFooter',
+	        value: function buildFooter() {
+	            this.articleHtml += this.article.getFooter();
+	        }
+	    }, {
+	        key: 'getTemplate',
+	        value: function getTemplate() {
+	            return '\n            <div class="article">\n                <div class="article-wrapper">\n                    ' + this.articleHtml + '\n                </div>\n            </div>\n        ';
+	        }
+	    }, {
+	        key: 'publish',
+	        value: function publish() {
+	            var wrapper = document.createElement('div');
+
+	            wrapper.className = "js-item";
+	            wrapper.innerHTML = this.getTemplate();
+
+	            return wrapper;
+	        }
+	    }]);
+	    return ArticleBuilder;
+	}();
+
 	var News = function () {
-	    function News(newsSource, apiKey) {
+	    function News(newsSource, apiKey, newsView) {
 	        (0, _classCallCheck3.default)(this, News);
 
 	        var urlAPI = 'https://newsapi.org/v1/articles?source=' + newsSource + '&apiKey=' + apiKey,
@@ -33,6 +131,8 @@ webpackJsonp([1],[
 	            method: 'GET',
 	            mode: 'cors'
 	        };
+
+	        this.newsView = newsView;
 
 	        this.requestNews(request, requestInit);
 	    }
@@ -72,67 +172,24 @@ webpackJsonp([1],[
 	                    }
 	                });
 
-	                _this2.createArticle(element);
-	                publishedList.appendChild(_this2.publishArticle());
+	                if (_this2.newsView === 'full') {
+	                    var fullArticleBuilder = new ArticleBuilder(element);
+
+	                    fullArticleBuilder.buildFigure();
+	                    fullArticleBuilder.buildContent();
+	                    fullArticleBuilder.buildFooter();
+
+	                    publishedList.appendChild(fullArticleBuilder.publish());
+	                } else {
+	                    var shortArticleBuilder = new ArticleBuilder(element);
+
+	                    shortArticleBuilder.buildContent();
+
+	                    publishedList.appendChild(shortArticleBuilder.publish());
+	                }
 	            });
 
 	            document.querySelector('.news-wrapper').appendChild(publishedList);
-	        }
-	    }, {
-	        key: 'createArticle',
-	        value: function createArticle(element) {
-	            var title = element.title,
-	                description = element.description,
-	                author = element.author,
-	                url = element.url,
-	                publishedAt = element.publishedAt,
-	                urlToImage = element.urlToImage;
-
-
-	            this.title = title;
-	            this.description = description;
-	            this.author = author;
-	            this.publishedAt = publishedAt;
-	            this.url = url;
-	            this.urlToImage = urlToImage;
-	        }
-	    }, {
-	        key: 'publishArticle',
-	        value: function publishArticle() {
-	            var wrapper = document.createElement('div');
-
-	            wrapper.className = "js-item";
-	            wrapper.innerHTML = this.getTemplate();
-
-	            return wrapper;
-	        }
-	    }, {
-	        key: 'getTemplate',
-	        value: function getTemplate() {
-	            return '\n            <div class="article">\n                <div class="article-wrapper">\n                    ' + this.getImage() + '\n                    <div class="article-content">\n                        <h2>\n                            <a href="' + this.url + '">' + this.title + '</a>\n                        </h2>\n                        <p>' + this.description + '</p>\n                    </div>\n                    <div class="article-footer">\n                        ' + this.getAuthor() + '\n                        ' + this.getPublishDate() + '\n                    </div>\n                </div>\n            </div>\n        ';
-	        }
-	    }, {
-	        key: 'getImage',
-	        value: function getImage() {
-	            return this.urlToImage ? '\n            <figure class="article-image">\n                <img src="' + this.urlToImage + '"/>\n            </figure>\n        ' : '';
-	        }
-	    }, {
-	        key: 'getAuthor',
-	        value: function getAuthor() {
-	            return this.author ? '\n            <div class="article-author">' + this.author + '</div>\n        ' : '';
-	        }
-	    }, {
-	        key: 'getPublishDate',
-	        value: function getPublishDate() {
-	            return this.publishedAt ? '\n            <div class="article-published">\n                <time datetime="' + this.publishedAt + '">' + this.formatDate() + '</time>\n            </div>\n        ' : '';
-	        }
-	    }, {
-	        key: 'formatDate',
-	        value: function formatDate() {
-	            var MM = { 1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December" },
-	                d = new Date(this.publishedAt);
-
-	            return d.getDate() + ' ' + MM[d.getMonth()] + ' ' + d.getFullYear();
 	        }
 	    }]);
 	    return News;

@@ -112,8 +112,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//import styles from './css/styles.css';
-
 	if (true) {
 	    console.log('Production mode');
 	} else {
@@ -125,7 +123,8 @@
 
 	    __webpack_require__.e/* nsure */(1, function (require) {
 	        var apiKey = '11230ec2000f450c914808f5b6f035f6';
-	        var newsSource = 'bbc-sport';
+	        var newsSource = 'bbc-sport',
+	            newsView = 'full';
 
 	        var News = __webpack_require__(4).default;
 
