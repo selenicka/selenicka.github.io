@@ -1,4 +1,5 @@
 var path = require('path');
+var helpers = require('./helpers');
 var webpack = require("webpack");
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,7 +8,7 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: ['./index.js'],
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: helpers.root('dist'),
     filename: 'app.js'
   },
   resolve: {
@@ -34,7 +35,7 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('css!sass'),
-        include: path.resolve(__dirname, '../sass')
+        include: helpers.root('sass')
       }
     ]
   },
