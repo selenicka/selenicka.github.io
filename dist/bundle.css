@@ -478,6 +478,20 @@ h1 {
     background-color: #ba4000;
     border-color: #ba4000; }
 
+.article-frame {
+  border: 1px solid #e84c3d;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-bottom: 3em; }
+
+.article-bg {
+  background-color: #f1c6b1;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-bottom: 3em; }
+  .article-bg .article-published {
+    color: #4e4e4e; }
+
 @media all and (min-width: 480px) {
   .article-image {
     float: right;

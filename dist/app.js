@@ -128,7 +128,7 @@
 
 	        var News = __webpack_require__(4).default;
 
-	        new News(newsSource, apiKey);
+	        new News(newsSource, apiKey, newsView);
 
 	        setTimeout(function () {
 	            self.style.display = 'none';

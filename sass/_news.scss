@@ -68,6 +68,25 @@ h1 {
     }
 }
 
+.article-frame {
+    border: 1px solid $color-orange1;
+    padding-left: $indent__m;
+    padding-right: $indent__m;
+    margin-bottom: $indent__l;
+}
+
+.article-bg {
+    background-color: $news__background-color;
+    padding-left: $indent__m;
+    padding-right: $indent__m;
+    margin-bottom: $indent__l;
+
+    .article-published {
+        color: $article-date__color2;
+
+    }
+}
+
 @media all and (min-width: $screen__xs) {
     .article-image {
         float: right;
