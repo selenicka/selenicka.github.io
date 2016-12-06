@@ -68,18 +68,23 @@ h1 {
     }
 }
 
+.search-wrap {
+    display: none;
+    float: right;
+}
+
 .article-frame {
     border: 1px solid $color-orange1;
-    padding-left: $indent__m;
-    padding-right: $indent__m;
-    margin-bottom: $indent__l;
+    padding-left: $indent__s;
+    padding-right: $indent__s;
+    margin-bottom: $indent__m;
 }
 
 .article-bg {
     background-color: $news__background-color;
-    padding-left: $indent__m;
-    padding-right: $indent__m;
-    margin-bottom: $indent__l;
+    padding-left: $indent__s;
+    padding-right: $indent__s;
+    margin-bottom: $indent__m;
 
     .article-published {
         color: $article-date__color2;
@@ -100,5 +105,17 @@ h1 {
     .article-image {
         margin-left: $indent__l;
         width: $article-image__width;
+    }
+
+    .article-frame {
+        padding-left: $indent__m;
+        padding-right: $indent__m;
+        margin-bottom: $indent__l;
+    }
+
+    .article-bg {
+        padding-left: $indent__m;
+        padding-right: $indent__m;
+        margin-bottom: $indent__l;
     }
 }

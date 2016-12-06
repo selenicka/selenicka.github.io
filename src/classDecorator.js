@@ -4,7 +4,6 @@ export class Decorator extends ArticleBuilder {
     constructor(template) {
         super();
         this.template = template;
-        console.log('2',this);
     }
 
     getTemplate() {
