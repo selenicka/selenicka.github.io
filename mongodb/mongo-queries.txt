@@ -1,0 +1,133 @@
+mongod --dbpath ./data
+
+mongoimport --db articles --collection articles --file ./articles.json
+
+mongodump  --db articles --archive=articles.dump.gz --gzip
+
+db.articles.drop()
+
+
+db.articles.insertMany([{
+      "source": "bbc-sport",
+      "author": "BBC Sport",
+      "title": "India v England: Ravichandran Ashwin seals series win in Mumbai",
+      "description": "England subside to an innings-and-36-run defeat on the final day of the fourth Test in Mumbai as India seal a series victory.",
+      "url": "http://www.bbc.co.uk/sport/cricket/38285670",
+      "urlToImage": "http://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/5264/production/_92929012_ashwinkohliap.jpg",
+      "publishedAt": "2016-12-12T05:32:52Z",
+      "section": "cricket",
+      "tags": ["sport", "cricket", "India", "England"]
+    },{
+      "source": "bbc-sport",
+      "author": "BBC Sport",
+      "title": "FA reform: Former chiefs say 'elderly white men' block change",
+      "description": "The Football Association is outdated with 'elderly white men' able to block changes, say former FA leaders.",
+      "url": "http://www.bbc.co.uk/sport/football/38274152",
+      "urlToImage": "http://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/065F/production/_92913610_dyke_pa.jpg",
+      "publishedAt": "2016-12-12T07:14:43Z",
+      "section": "football",
+      "tags": ["sport", "football"]
+    },{
+      "source": "bbc-news",
+      "author": "BBC News",
+      "title": "UK's current GDP growth rate won't last, warns business body",
+      "description": "The UK economy's buoyant growth rate will not last, the British Chambers of Commerce (BCC) claims.",
+      "url": "http://www.bbc.co.uk/news/business-38284554",
+      "urlToImage": "http://ichef-1.bbci.co.uk/news/1024/cpsprodpb/13B24/production/_89167608_89167607.jpg",
+      "publishedAt": "2016-12-12T07:10:46Z",
+      "section": "business",
+      "tags": ["economy", "business", "UK"]
+    },{
+      "source": "bbc-news",
+      "author": "BBC News",
+      "title": "Squid may become favourite UK meal as seas become warmer",
+      "description": "Squid may end up on the British plate in place of old favourites such as cod as UK waters warm up.",
+      "url": "http://www.bbc.co.uk/news/science-environment-38265395",
+      "urlToImage": "http://ichef.bbci.co.uk/news/1024/cpsprodpb/60C2/production/_92907742_thinkstockphotos-454002713.jpg",
+      "publishedAt": "2016-12-12T02:37:46Z",
+      "section": "science-environment",
+      "tags": ["science", "environment", "UK"]
+    },{
+      "source": "business-insider",
+      "author": "Pamela Engel",
+      "title": "Trump has shaken up decades of diplomacy with 4 phone calls",
+      "description": "President-elect Donald Trump has spoken to dozens of foreign leaders on the phone since he won the election.",
+      "url": "http://www.businessinsider.com/trump-diplomacy-phone-calls-2016-12",
+      "urlToImage": "http://static1.businessinsider.com/image/584b44bca1a45ef4008b4e74-1190-625/trump-has-shaken-up-decades-of-diplomacy-with-4-phone-calls.jpg",
+      "publishedAt": "2016-12-11T21:35:00Z",
+      "section": "diplomacy",
+      "tags": ["Donald Trump", "diplomacy"]
+    },{
+      "source": "business-insider",
+      "author": "Ben Moshinsky",
+      "title": "Oil is going crazy after the first deal in 15 years is sealed between Russia and Saudi Arabia to cut production",
+      "description": "The price of oil surged more than $2 a barrel, or 5%, after surprise cuts from Saudi Arabia and other major oil producing countries.",
+      "url": "http://www.businessinsider.com/oil-price-surges-after-saudi-arabia-russia-deal-on-production-2016-12",
+      "urlToImage": "http://static1.businessinsider.com/image/584e571fdd08954b558b4904-1190-625/oil-is-going-crazy-after-the-first-deal-in-15-years-is-sealed-between-russia-and-saudi-arabia-to-cut-production.jpg",
+      "publishedAt": "2016-12-12T07:51:32Z",
+      "section": "economy",
+      "tags": ["Oil", "OPEC", "Saudi Arabia", "Economy", "Russia", "Iran"]
+    },{
+      "source": "bloomberg",
+      "author": "Henry Meyer",
+      "title": "Russia Applauds Trump Dream Team as Exxon CEO Eyed for State",
+      "description": "With two decades of deal-making in Russia’s vital oil industry under his belt, Rex Tillerson is Vladimir Putin’s kind of man.",
+      "url": "https://www.bloomberg.com/news/articles/2016-12-11/putin-awaits-fantastic-trump-team-as-exxon-ally-may-head-state",
+      "urlToImage": "https://assets.bwbx.io/javelin/public/images/social-default-a4f15fa7ee.jpg",
+      "publishedAt": "2016-12-11T23:00:50.917Z",
+      "section": "economy",
+      "tags": ["Oil", "Donald Trump", "Economy", "Russia"]
+    },{
+      "source": "bloomberg",
+      "author": "Lorcan Roche Kelly",
+      "title": "Five Things You Need to Know to Start Your Day",
+      "description": "Get caught up on what's moving markets.",
+      "url": "https://www.bloomberg.com/news/articles/2016-12-12/oil-surges-bonds-rise-italian-banks-what-people-are-talking-about",
+      "urlToImage": "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iFbIzpgAiiKI/v0/-1x-1.jpg",
+      "publishedAt": "2016-12-12T11:04:31.538Z",
+      "section": "economy",
+      "tags": ["Oil", "Market", "Economy"]
+    },{
+      "source": "bloomberg",
+      "author": "Bryan Gruley",
+      "title": "Is Kratom a Deadly Drug or a Life-Saving Medicine?",
+      "description": "Advocates believe the powder helps people kick opioids without risk of addiction. When the DEA tried to criminalize it, they fought back.",
+      "url": "https://www.bloomberg.com/news/features/2016-12-12/is-kratom-a-deadly-drug-or-a-life-saving-medicine",
+      "urlToImage": "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i6mflESIMZTU/v0/-1x-1.jpg",
+      "publishedAt": "2016-12-12T11:00:05.564Z",
+      "section": "society",
+      "tags": ["Kratom", "Drug", "Medicine"]
+    }])
+
+
+
+db.articles.find({source: 'bbc-sport'}).sort({publishedAt: -1})
+
+db.articles.insertOne(
+  {
+    "source": "bloomberg",
+    "title": "China’s Stocks, Bonds, Yuan Slump in Unison on Liquidity Concern",
+    "description": "Unease is once again permeating China’s financial markets.",
+    "url": "https://www.bloomberg.com/news/articles/2016-12-12/china-s-stocks-bonds-yuan-slump-in-unison-on-liquidity-concern",
+    "urlToImage": "https://assets.bwbx.io/javelin/public/images/social-markets-3d32d2f713.jpg",
+    "publishedAt": "2016-12-12T08:20:12.196Z",
+    "section": "economy",
+    "tags": ["economy", "China"]
+  }
+)
+    
+db.articles.update(
+  {source: 'bloomberg'},
+  {$addToSet: {tags: {$each: ['economy', 'China']}}}
+)
+
+db.articles.update(
+  {source: 'bloomberg'},
+  {$pull: {tags: {$in:['economy']}}}
+)
+
+db.articles.deleteOne(
+  {tags: {$in: ['Donald Trump']}}
+)
+
+db.articles.createIndex({source: 1, section: 1})
