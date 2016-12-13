@@ -131,3 +131,9 @@ db.articles.deleteOne(
 )
 
 db.articles.createIndex({source: 1, section: 1})
+
+
+Дамп с сервера
+mongodump --host ds061206.mlab.com:61206 -u <user> -p <pass> --db heroku_5nnbsdwg --archive=articles.heroku.dump.gz --gzip
+
+mongoimport --host ds061206.mlab.com:61206 -u <user> -p <pass> --db heroku_5nnbsdwg -c grades --file ./grades.json

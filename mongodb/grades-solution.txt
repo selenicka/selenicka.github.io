@@ -1,0 +1,53 @@
+db.grades.aggregate([
+    {
+        $unwind: "$scores"
+    },    
+    {
+        $match: {
+            "scores.type": { "$ne": 'quiz' }
+        }
+    },
+    {
+        $group: {
+            "_id": {
+                "student_id": "$student_id",
+                "class_id": "$class_id"
+            },
+            "scores":{
+                "$push": "$scores"
+            },
+            "scores_average": {
+                "$avg": "$scores.score"
+            }
+        }
+    },
+    {
+        $project: {
+            "_id": 0,
+            "student_id": "$_id.student_id",
+            "class_id": "$_id.class_id",
+            "scores_average": 1,
+            "scores": 1
+        }
+    },{
+        $group: {
+            "_id": "$class_id",
+            "scores_average": {
+                "$avg": "$scores_average"
+            }
+        }
+    },
+    {
+        $project: {
+            "_id": 0,
+            "class_id": "$_id",
+            "scores_average": 1
+        }
+    },
+    { 
+        $sort : { scores_average: -1 } 
+    },
+    { 
+        $limit: 1 
+    }
+])
